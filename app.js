@@ -97,5 +97,5 @@ app.post("/weather/new", async (req, res) => {
 
 
 app.listen(PORT, function() {
-    console.log("server started");
+    console.log("server started on port:" + PORT);
 });
