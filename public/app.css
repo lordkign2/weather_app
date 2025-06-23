@@ -25,6 +25,7 @@ form {
 html body {
   background-color: aliceblue;
   padding-top: 70px;
+  transition: all, 1s;
 }
 body.dark-mode {
 background-color: #121212;
