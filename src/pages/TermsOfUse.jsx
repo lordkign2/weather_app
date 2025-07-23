@@ -8,7 +8,7 @@ export default function TermsOfUse() {
     return (
       <div className="relative min-h-screen bg-gradient-to-br from-sky-100 to-blue-300 dark:from-gray-800 dark:to-gray-900 text-gray-900 dark:text-white p-6">
           {/* 🌊 Background Waves - full screen */}
-      <div className="absolute inset-0 z-10 h-full w-full pointer-events-none backdrop-blur-sm" >
+      <div className="absolute inset-0 z-10 h-full w-full pointer-events-none" >
   <Waves
     lineColor="#ffffff"
     backgroundColor="rgba(255, 255, 255, 0.05)"
