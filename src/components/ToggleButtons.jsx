@@ -12,7 +12,7 @@ export default function ToggleButtons({ unit, onToggleUnit, onToggleTheme }) {
           onClick={onToggleTheme}
           className="bg-white dark:bg-gray-700 border rounded-full px-4 py-1 shadow-sm text-sm font-medium"
         >
-          🌙 / ☀️
+          Browser Theme (🌙 / ☀️)
         </button>
       </div>
     );
