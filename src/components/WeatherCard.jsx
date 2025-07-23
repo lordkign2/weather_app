@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 export default function WeatherCard({ forecast, unit = "metric" }) {
     if (!forecast || forecast.length === 0) return null;
   
@@ -18,10 +20,13 @@ export default function WeatherCard({ forecast, unit = "metric" }) {
               <h3 className="font-semibold text-sm">
                 {weekday}, {dateStr}
               </h3>
-              <img
+              
+              <motion.img
                 src={`https://openweathermap.org/img/wn/${day.icon}@2x.png`}
                 alt={day.desc}
                 className="mx-auto w-12 h-12"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ type: "spring", stiffness: 100 }}
               />
               <p className="text-lg font-bold">{Math.round(day.temp)}{unitSymbol}</p>
               <p className="capitalize text-sm text-gray-600 dark:text-gray-400">{day.desc}</p>

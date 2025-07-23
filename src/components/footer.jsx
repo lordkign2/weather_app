@@ -18,14 +18,7 @@ export default function Footer() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     };
   
-   // if (!visible) return null;
-
-    const handleSubscribe = (e) => {
-    e.preventDefault();
-    if (!email.trim()) return;
-    alert(`Subscribed: ${email}`);
-    setEmail("");
-    };
+   // if (!visible) return null
 
     useEffect(() => {
         const btn = document.getElementById("backToTop");
@@ -37,6 +30,15 @@ export default function Footer() {
     }, []);
 
     const currentYear = new Date().getFullYear();
+
+
+    const handleSubscribe = (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email")
+      if (email.value ==='') {email.placeholder = "Input your email"; return}
+      else {alert(`Subscribed: ${email.value}`); email.placeholder = `Welcome ${email.value}`}
+      email.value = "";
+    };
 
   return (
     <footer className="mt-12 bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-xl shadow-inner px-4 py-8">
@@ -61,9 +63,10 @@ export default function Footer() {
         <div>
           <h3 className="font-semibold mb-2">Links</h3>
           <ul className="space-y-1 text-sm">
+          <li><a href="/" className="hover:text-blue-600">Home</a></li>
             <li><a href="/about" className="hover:text-blue-600">About</a></li>
-            <li><a href="/privacy" className="hover:text-blue-600">Privacy Policy</a></li>
-            <li><a href="/terms" className="hover:text-blue-600">Terms of Use</a></li>
+            <li><a href="/privacy-policy" className="hover:text-blue-600">Privacy Policy</a></li>
+            <li><a href="/terms-of-use" className="hover:text-blue-600">Terms of Use</a></li>
           </ul>
         </div>
 
@@ -107,15 +110,15 @@ export default function Footer() {
 
         <div>
           <h3 className="font-semibold mb-2">Newsletter</h3>
-          <form  onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-2">
+          <form onSubmit={handleSubscribe} className="flex flex-col gap-2">
             <input
               type="email"
+              id="email"
               placeholder="you@example.com"
               className="px-3 py-2 rounded-md bg-gray-100 dark:bg-gray-700 border dark:border-gray-600 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <button
               type="submit"
-              
               className="text-sm bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-md transition"
             >
               Subscribe

@@ -5,6 +5,8 @@ import ToggleButtons from "../components/ToggleButtons";
 import ForecastCard from "../components/ForecastCard";
 import Footer from "../components/Footer"; 
 import axios from "axios";
+import Particles from '../backgrounds/Particles/Particles';
+import LDSWeatherLogo from "../components/LDSWeatherLogo";
 
 export default function Home() {
   const [forecast, setForecast] = useState([]);
@@ -92,18 +94,42 @@ export default function Home() {
   }, [unit]); // Re-run if unit changes
 
   return (
-    
-    <div id="top" className="min-h-screen bg-gradient-to-br from-sky-100 to-blue-300 dark:from-gray-800 dark:to-gray-900 text-gray-900 dark:text-white p-4">
-      <div className="max-w-4xl mx-auto space-y-6">
-        
-            <h1 className="text-3xl font-bold text-center">🌤 Weather App</h1>
-            <ToggleButtons onToggleUnit={toggleUnit} unit={unit}  onToggleTheme={toggleTheme} />
-            <SearchBar onSearch={handleSearch} />
-            {city && <h2 className="text-center text-xl font-medium">{city}</h2>}
-            <WeatherCard forecast={forecast} unit={unit} />
-            {/* <ForecastCard daily={forecast} unit={unit} /> */}
-            <Footer />
+    <div id="top" className="relative min-h-screen overflow-x-hidden bg-gradient-to-br from-sky-100 to-blue-300 dark:from-gray-800 dark:to-gray-900 text-gray-900 dark:text-white">
+      
+      {/* Particle Background Layer */}
+      <div className="absolute inset-0 z-0 h-full w-full">
+        <Particles
+          particleColors={["#ffffff", "#ffffff"]}
+          particleCount={2000}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={100}
+          moveParticlesOnHover={true}
+          alphaParticles={false}
+          disableRotation={false}
+          style={{
+            width: "100%",
+            height: "100%",
+            position: "absolute",
+            inset: 0,
+          }}
+        />
+      </div>
+
+      {/* Main App Content */}
+      <div className="relative z-10 max-w-4xl mx-auto p-4 space-y-6">
+        <header className="flex items-center p-4">
+          <LDSWeatherLogo /> 
+          <h1 className="text-3xl font-bold text-center">Weather App</h1>
+        </header>
+        <ToggleButtons onToggleUnit={toggleUnit} unit={unit} onToggleTheme={toggleTheme} />
+        <SearchBar onSearch={handleSearch} />
+        {city && <h2 className="text-center text-xl font-medium">{city}</h2>}
+        <WeatherCard forecast={forecast} unit={unit} />
+        {/* <ForecastCard daily={forecast} unit={unit} /> */}
+        <Footer />
       </div>
     </div>
   );
+  
 }
