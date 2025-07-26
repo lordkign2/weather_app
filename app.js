@@ -18,8 +18,8 @@ app.get("/weather", function(req, res) {
 
 app.post("/weather/new", async (req, res) => {
     var searchCity = req.body.city
-    var searchURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchCity + "&units=metric&appid=ae01b42d69cbfa8f4dd0f6b61427222b";
-    var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchCity + "&units=metric&appid=ae01b42d69cbfa8f4dd0f6b61427222b";
+    var searchURL = "https://api.openweathermap.org/data/2.5/weather?q=" + searchCity + "&units=metric&appid=e8ca1eaf3f9357665b287ce37e2ef828";
+    var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchCity + "&units=metric&appid=e8ca1eaf3f9357665b287ce37e2ef828";
     
     try {
         var currentResponse = await axios.get(searchURL);
